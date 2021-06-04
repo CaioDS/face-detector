@@ -1,6 +1,5 @@
 const tf = require("@tensorflow/tfjs-node");
 const fs = require("fs").promises;
-const mobilenet = require("@tensorflow-models/mobilenet");
 const cocoSsd = require("@tensorflow-models/coco-ssd");
 
 exports.detectImageObjects = async (path) => {
