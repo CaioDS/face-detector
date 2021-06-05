@@ -6,8 +6,6 @@ const routes = require("../api/routes/routes");
 const app = express();
 
 exports.startServer = () => {
-  const PORT = 8080;
-
   app.use(
     fileUpload({
       useTempFiles: true,
@@ -16,7 +14,7 @@ exports.startServer = () => {
   );
   app.use(bodyParser.json());
 
-  app.listen(PORT, () => {
+  app.listen(process.env.PORT || 5000, () => {
     console.log(`Server initialized in port 8080`);
   });
 
