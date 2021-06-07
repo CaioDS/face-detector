@@ -6,9 +6,14 @@ exports.rateImage = async (req, res) => {
     const classificationResult = await classificatorService.detectImageObjects(
       image.tempFilePath
     );
-    const x = classificationResult[0].class;
+    const parsedResult = classificationResult[0].class;
+    if (parsedResult.length > 0) {
+      return res.json({
+        rate: parsedResult,
+      });
+    }
     return res.json({
-      x,
+      rate: "Not found",
     });
   } catch (error) {
     console.log("ERRO:", error);
