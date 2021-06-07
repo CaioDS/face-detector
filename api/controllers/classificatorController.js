@@ -11,6 +11,7 @@ exports.rateImage = async (req, res) => {
       x,
     });
   } catch (error) {
+    console.log("ERRO:", error);
     return res.json({
       error,
     });
