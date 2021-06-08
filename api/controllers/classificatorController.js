@@ -6,8 +6,9 @@ exports.rateImage = async (req, res) => {
     const classificationResult = await classificatorService.detectImageObjects(
       image.tempFilePath
     );
-    const parsedResult = classificationResult[0].class;
-    if (parsedResult.length > 0) {
+
+    if (classificationResult[0]) {
+      const parsedResult = classificationResult[0].class;
       return res.json({
         rate: parsedResult,
       });
