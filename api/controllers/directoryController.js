@@ -8,7 +8,7 @@ exports.removeSnapshotsFiles = (req, res) => {
       result: "OK",
     });
   } catch (error) {
-    console.log("ERRO DIRETÓRIO:", error);
+    console.log("ERRO:", error);
     return res.json({
       error,
     });
