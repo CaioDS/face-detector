@@ -1,18 +1,12 @@
-const express = require("express");
-const bodyParser = require("body-parser");
-const fileUpload = require("express-fileupload");
-const routes = require("../api/routes/routes");
+const express = require('express');
+const bodyParser = require('body-parser');
+const routes = require('../api/routes/routes');
 
 const app = express();
 
 exports.startServer = () => {
-  app.use(
-    fileUpload({
-      useTempFiles: true,
-      tempFileDir: "C:/Caio/face-detector/public/uploadedImages",
-    })
-  );
   app.use(bodyParser.json());
+  app.use(bodyParser.urlencoded({ extended: true }));
 
   app.listen(process.env.PORT || 5000, () => {
     console.log(`Server initialized in port 8080`);
@@ -22,5 +16,5 @@ exports.startServer = () => {
 };
 
 exports.routes = () => {
-  app.use("/api", routes);
+  app.use('/api', routes);
 };
