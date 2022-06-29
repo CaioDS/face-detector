@@ -30,6 +30,10 @@ exports.recognizeUser2 = async (userId, path) => {
   let result;
 
   await new Promise((resolve) => {
+    pyScript.stderr.on('data', (data) => {
+      console.log('ERROR', data.toString());
+    });
+
     pyScript.stdout.on('data', (data) => {
       console.log(data.toString());
       result = data.toString() === 'True\r\n' ? true : false;
